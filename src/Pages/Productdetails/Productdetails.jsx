@@ -7,7 +7,7 @@ import { cartcontext } from "../../Context/CartContextProvider";
 
 export default function ProductDetails() {
   const { getaddToCart } = useContext(cartcontext);
-   document.title = "ProductDetails";
+  document.title = "ProductDetails";
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -73,12 +73,17 @@ export default function ProductDetails() {
           </p>
 
           <p className="text-xl font-bold text-indigo-700">
-            💰 Price: <span className=" font-medium text-indigo-500">${product.price}</span>
+            💰 Price:{" "}
+            <span className=" font-medium text-indigo-500">
+              ${product.price}
+            </span>
           </p>
 
           <p className=" font-bold text-indigo-700 ">
             📁 Category:{" "}
-            <span className="text-indigo-500 font-medium">{product.category}</span>
+            <span className="text-indigo-500 font-medium">
+              {product.category}
+            </span>
           </p>
 
           <div className="flex items-center gap-2 mt-2">

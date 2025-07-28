@@ -26,7 +26,7 @@ export default function CartContextProvider({ children }) {
       if (localCart) {
         setCart(localCart);
       } else {
-        setCart([]); 
+        setCart([]);
       }
     } catch (error) {
       console.error("❌ Error fetching cart:", error);
@@ -39,7 +39,9 @@ export default function CartContextProvider({ children }) {
     const loadingToast = toast.loading("Adding product...");
     setLoading(true);
     try {
-      const res = await axios.get(`https://fakestoreapi.com/products/${productId}`);
+      const res = await axios.get(
+        `https://fakestoreapi.com/products/${productId}`
+      );
 
       const existingItem = cart.find((item) => item.productId === productId);
       let updatedCart;
@@ -47,7 +49,9 @@ export default function CartContextProvider({ children }) {
       if (existingItem) {
         const newQuantity = existingItem.quantity + quantity;
         updatedCart = cart.map((item) =>
-          item.productId === productId ? { ...item, quantity: newQuantity } : item
+          item.productId === productId
+            ? { ...item, quantity: newQuantity }
+            : item
         );
         toast.success(`🔄 Increased quantity to ${newQuantity}`);
       } else {

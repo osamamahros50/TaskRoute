@@ -4,7 +4,7 @@ import ProductCard from "../../Component/ProductCard/ProductCard.jsx";
 import Loader from "../../Component/Loder/Loader.jsx";
 
 export default function Home() {
-   document.title = "Home";
+  document.title = "Home";
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);

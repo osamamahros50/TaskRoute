@@ -50,7 +50,7 @@ export default function ProductCard({ product }) {
       <button
         onClick={() => getaddToCart(product.id)}
         className="
-    absolute bottom-4 left-1/2 -translate-x-1/2
+    absolute bottom-4 left-3/4 -translate-x-1/2
     opacity-100 md:opacity-0 md:translate-y-3 
     md:group-hover:opacity-100 md:group-hover:translate-y-0
     transition-all duration-300 ease-in-out
