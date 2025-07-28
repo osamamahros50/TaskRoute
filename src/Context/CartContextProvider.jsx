@@ -26,7 +26,7 @@ export default function CartContextProvider({ children }) {
       if (localCart) {
         setCart(localCart);
       } else {
-        setCart([]); // أول مرة، خلي cart فاضية
+        setCart([]); 
       }
     } catch (error) {
       console.error("❌ Error fetching cart:", error);
