@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, ShoppingCart } from "lucide-react";
 import { useContext } from "react";
-import { cartcontext } from './../../Context/CartContextProvider';
+import { cartcontext } from "./../../Context/CartContextProvider";
 
 export default function ProductCard({ product }) {
   const navigate = useNavigate();
   const { getaddToCart } = useContext(cartcontext);
-    
+
   return (
     <div
       className="relative group transform transition duration-300 
@@ -50,8 +50,9 @@ export default function ProductCard({ product }) {
       <button
         onClick={() => getaddToCart(product.id)}
         className="
-    absolute bottom-4 left-1/2 -translate-x-1/2
-    opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0
+     absolute bottom-4 left-1/2 -translate-x-1/2
+    opacity-100 md:opacity-0 md:translate-y-3 
+    md:group-hover:opacity-100 md:group-hover:translate-y-0
     transition-all duration-300 ease-in-out
     bg-indigo-600 hover:bg-indigo-700
     text-white text-sm md:text-base font-medium
@@ -66,13 +67,13 @@ export default function ProductCard({ product }) {
 
       <button
         onClick={() => navigate(`/products/${product.id}`)}
-        className="absolute top-2 right-1/2 translate-x-1/2 
-             group-hover:top-1/2 group-hover:-translate-y-1/2 
-             opacity-0 group-hover:opacity-100 
-             transition-all duration-500 
-             cursor-pointer bg-indigo-600 text-white hover:bg-indigo-500 
-             hover:text-white p-2 rounded-full 
-             border border-indigo-600 shadow-md z-10"
+        className="    absolute top-2 right-1/2 translate-x-1/2 
+    md:group-hover:top-1/2 md:group-hover:-translate-y-1/2 
+    opacity-100 md:opacity-0 md:group-hover:opacity-100 
+    transition-all duration-500 
+    cursor-pointer bg-indigo-600 text-white hover:bg-indigo-500 
+    hover:text-white p-2 rounded-full 
+    border border-indigo-600 shadow-md z-10"
       >
         <Eye className="w-4 h-4" />
       </button>
