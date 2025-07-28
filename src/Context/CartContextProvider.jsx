@@ -110,7 +110,7 @@ export default function CartContextProvider({ children }) {
   function clearCart() {
     setCart([]);
     saveToLocalStorage([]);
-    toast.info("🧹 Cart cleared");
+    toast.success("🧹 Cart cleared");
   }
 
   function updateCartItem(productId, quantity) {

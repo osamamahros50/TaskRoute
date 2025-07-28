@@ -7,7 +7,7 @@ import Cartitem from "./../../Component/Cartitem/Cartitem";
 import { motion } from "framer-motion";
 
 export default function Cart() {
-  const { cart, getLogedCart } = useContext(cartcontext);
+  const { cart, getLogedCart, clearCart } = useContext(cartcontext);
   const navigate = useNavigate();
   document.title = "Cart";
   useEffect(() => {
@@ -60,6 +60,16 @@ export default function Cart() {
           </motion.div>
         ) : (
           <div className="mx-auto max-w-5xl justify-center px-6 flex flex-col">
+            <button
+                  onClick={() => {
+      setTimeout(() => {
+        clearCart();
+      }, 1000); 
+    }}
+              className="px-4 py-2 w-fit mx-auto shadow text-white cursor-pointer mb-2 bg-gradient-to-r from-[#fb7185] via-[#e11d48] to-[#be123c] hover:from-[#be123c] hover:to-[#fb7185]  rounded-lg transition disabled:opacity-50"
+            >
+              Clear All
+            </button>
             <div className="rounded-lg md:w-full">
               {cart.map((item) => (
                 <Cartitem key={item.productId} item={item} />
