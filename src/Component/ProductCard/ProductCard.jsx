@@ -65,9 +65,9 @@ export default function ProductCard({ product }) {
         Add to Cart
       </button>
 
-<button
-  onClick={() => navigate(`/products/${product.id}`)}
-  className="
+      <button
+        onClick={() => navigate(`/products/${product.id}`)}
+        className="
     absolute 
     top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
     md:top-2 md:right-2 md:left-auto md:translate-x-0 md:translate-y-0
@@ -76,10 +76,9 @@ export default function ProductCard({ product }) {
     transition-all duration-500 
     cursor-pointer bg-indigo-600 text-white hover:bg-indigo-500 
     p-2 rounded-full border border-indigo-600 shadow-md z-10"
->
-  <Eye className="w-4 h-4" />
-</button>
-
+      >
+        <Eye className="w-4 h-4" />
+      </button>
     </div>
   );
 }

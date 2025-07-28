@@ -9,14 +9,13 @@ export default function CartContextProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const userId = 1;
-
+  const userId = localStorage.getItem("userId") || 1;
   const saveToLocalStorage = (data) => {
-    localStorage.setItem("cart", JSON.stringify(data));
+    localStorage.setItem(`cart-${userId}`, JSON.stringify(data));
   };
 
   const loadFromLocalStorage = () => {
-    const data = localStorage.getItem("cart");
+    const data = localStorage.getItem(`cart-${userId}`);
     return data ? JSON.parse(data) : null;
   };
 
@@ -31,7 +30,7 @@ export default function CartContextProvider({ children }) {
       }
 
       const { data } = await axios.get("https://fakestoreapi.com/carts");
-      const userCart = data.find((cart) => cart.userId === userId);
+      const userCart = data.find((cart) => cart.userId == userId);
 
       if (userCart) {
         const productsWithDetails = await Promise.all(
