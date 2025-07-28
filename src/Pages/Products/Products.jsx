@@ -44,29 +44,31 @@ export default function Products() {
         Error loading products
       </div>
     );
-     document.title = "Products";
+
+  document.title = "Products";
+
   return (
-    <div className="container mx-auto  py-10 ">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="mb-10">
-        <h1 className="text-center text-2xl font-bold text-indigo-600 mt-20 mb-1 ">
+        <h1 className="text-center text-2xl font-bold text-indigo-600 mt-20 mb-1">
           Browse Products
         </h1>
         <div className="h-1 bg-indigo-600 w-24 mx-auto rounded-full"></div>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center gap-2 mb-8">
+      <div className="flex flex-col sm:flex-row items-center gap-4 mb-8 max-w-4xl mx-auto">
         <input
           type="text"
           placeholder="Search products..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-[90%] md:w-1/2 border dark:text-white border-indigo-400 rounded-full py-2 px-4 shadow focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full sm:flex-1 border dark:text-white border-indigo-400 rounded-full py-2 px-4 shadow focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
 
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
-          className="w-[90%] md:w-1/2 border border-indigo-400 dark:text-white rounded-full py-2 px-4 shadow focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full sm:w-48 border border-indigo-400 dark:text-white rounded-full py-2 px-4 shadow focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           <option value="">Sort by</option>
           <option value="price-asc">Price: Low → High</option>
@@ -75,7 +77,7 @@ export default function Products() {
         </select>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
         {filteredProducts.map((product, index) => (
           <div key={product.id} data-aos="fade-up" data-aos-delay={index * 20}>
             <ProductCard product={product} />
