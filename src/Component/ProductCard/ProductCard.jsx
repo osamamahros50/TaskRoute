@@ -50,7 +50,7 @@ export default function ProductCard({ product }) {
       <button
         onClick={() => getaddToCart(product.id)}
         className="
-     absolute bottom-4 left-1/2 -translate-x-1/2
+    absolute bottom-4 left-1/2 -translate-x-1/2
     opacity-100 md:opacity-0 md:translate-y-3 
     md:group-hover:opacity-100 md:group-hover:translate-y-0
     transition-all duration-300 ease-in-out
@@ -65,18 +65,21 @@ export default function ProductCard({ product }) {
         Add to Cart
       </button>
 
-      <button
-        onClick={() => navigate(`/products/${product.id}`)}
-        className="    absolute top-2 right-1/2 translate-x-1/2 
-    md:group-hover:top-1/2 md:group-hover:-translate-y-1/2 
-    opacity-100 md:opacity-0 md:group-hover:opacity-100 
+<button
+  onClick={() => navigate(`/products/${product.id}`)}
+  className="
+    absolute 
+    top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+    md:top-2 md:right-2 md:left-auto md:translate-x-0 md:translate-y-0
+    md:opacity-0 md:group-hover:opacity-100 
+    md:group-hover:top-1/2 md:group-hover:right-1/2 md:group-hover:-translate-y-1/2 md:group-hover:translate-x-1/2
     transition-all duration-500 
     cursor-pointer bg-indigo-600 text-white hover:bg-indigo-500 
-    hover:text-white p-2 rounded-full 
-    border border-indigo-600 shadow-md z-10"
-      >
-        <Eye className="w-4 h-4" />
-      </button>
+    p-2 rounded-full border border-indigo-600 shadow-md z-10"
+>
+  <Eye className="w-4 h-4" />
+</button>
+
     </div>
   );
 }

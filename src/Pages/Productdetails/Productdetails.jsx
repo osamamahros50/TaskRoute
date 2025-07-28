@@ -42,7 +42,7 @@ export default function ProductDetails() {
   }
 
   return (
-    <div className="container mx-auto p-6 py-10 ">
+    <div className="container mx-auto p-6 py-10 mt-18 ">
       <div className="mb-6">
         <button
           onClick={() => navigate(-1)}
@@ -68,17 +68,17 @@ export default function ProductDetails() {
             {product.title.split(" ", 3).join(" ")}
           </h1>
 
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-600 dark:text-white leading-relaxed">
             {product.description.split(" ", 20).join(" ")}...
           </p>
 
-          <p className="text-xl font-semibold text-indigo-600">
-            💰 Price: <span className="text-gray-800">${product.price}</span>
+          <p className="text-xl font-bold text-indigo-700">
+            💰 Price: <span className=" font-medium text-indigo-500">${product.price}</span>
           </p>
 
-          <p className="text-sm font-semibold text-gray-700">
+          <p className=" font-bold text-indigo-700 ">
             📁 Category:{" "}
-            <span className="text-indigo-600">{product.category}</span>
+            <span className="text-indigo-500 font-medium">{product.category}</span>
           </p>
 
           <div className="flex items-center gap-2 mt-2">
@@ -89,7 +89,7 @@ export default function ProductDetails() {
                 </span>
               ))}
             </div>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-indigo-600">
               ({product.rating?.count} reviews)
             </span>
           </div>
