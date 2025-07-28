@@ -9,13 +9,13 @@ export default function CartContextProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const userId = localStorage.getItem("userId") || 1;
+
   const saveToLocalStorage = (data) => {
-    localStorage.setItem(`cart-${userId}`, JSON.stringify(data));
+    localStorage.setItem("cart", JSON.stringify(data));
   };
 
   const loadFromLocalStorage = () => {
-    const data = localStorage.getItem(`cart-${userId}`);
+    const data = localStorage.getItem("cart");
     return data ? JSON.parse(data) : null;
   };
 
@@ -25,27 +25,8 @@ export default function CartContextProvider({ children }) {
       const localCart = loadFromLocalStorage();
       if (localCart) {
         setCart(localCart);
-        setLoading(false);
-        return;
-      }
-
-      const { data } = await axios.get("https://fakestoreapi.com/carts");
-      const userCart = data.find((cart) => cart.userId == userId);
-
-      if (userCart) {
-        const productsWithDetails = await Promise.all(
-          userCart.products.map(async (item) => {
-            const res = await axios.get(
-              `https://fakestoreapi.com/products/${item.productId}`
-            );
-            return {
-              ...item,
-              product: res.data,
-            };
-          })
-        );
-        setCart(productsWithDetails);
-        saveToLocalStorage(productsWithDetails);
+      } else {
+        setCart([]); // أول مرة، خلي cart فاضية
       }
     } catch (error) {
       console.error("❌ Error fetching cart:", error);
@@ -58,9 +39,7 @@ export default function CartContextProvider({ children }) {
     const loadingToast = toast.loading("Adding product...");
     setLoading(true);
     try {
-      const res = await axios.get(
-        `https://fakestoreapi.com/products/${productId}`
-      );
+      const res = await axios.get(`https://fakestoreapi.com/products/${productId}`);
 
       const existingItem = cart.find((item) => item.productId === productId);
       let updatedCart;
@@ -68,9 +47,7 @@ export default function CartContextProvider({ children }) {
       if (existingItem) {
         const newQuantity = existingItem.quantity + quantity;
         updatedCart = cart.map((item) =>
-          item.productId === productId
-            ? { ...item, quantity: newQuantity }
-            : item
+          item.productId === productId ? { ...item, quantity: newQuantity } : item
         );
         toast.success(`🔄 Increased quantity to ${newQuantity}`);
       } else {
